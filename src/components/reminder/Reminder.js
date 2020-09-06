@@ -4,7 +4,7 @@ import style from './Reminder.module.scss';
 function Reminder(props) {
 
 	return(
-		<div className={style['reminder']}>
+		<div className={style['reminder']} data-color="green">
       {props.text} 
 		</div>
 	);
