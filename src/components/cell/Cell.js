@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import style from './Cell.module.scss';
-import DoneIcon from '@material-ui/icons/Done';
 import Reminder from 'Components/reminder/Reminder';
 import dayjs from 'dayjs';
+import ReminderContext from 'Context/Context';
 
 function Cell(props) {
 	return(
