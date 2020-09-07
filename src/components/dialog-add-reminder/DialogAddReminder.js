@@ -3,6 +3,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import TextField from '@material-ui/core/TextField';
 import ReminderContext from 'Context/Context';
+import useSubmit from 'Hooks/UseSubmit';
 
 
 function DialogAddReminder(props) {
@@ -13,28 +14,36 @@ function DialogAddReminder(props) {
   }
 
   const { number, setNumber } = useContext(ReminderContext);
-  const addReminder = () => {
-    console.log(ReminderContext);
+
+  const addReminder = (inputs) => {
     setNumber([['ggggga', 'ddddd'], ['bbbbbb', 'eeeeee']]);
   }
+
+  const {inputs, handleInputChange, handleSubmit} = useSubmit(addReminder);
 
 	return(
 		<Dialog onClose={handleClose} open={open}>
       <DialogTitle>Add Reminder</DialogTitle>
-      <form> 
+      <form onSubmit={handleSubmit}> 
         <div>
-            <TextField
-              id="date"
-              type="date"
-              label="Data"
-              InputLabelProps={{
-                shrink: true
-              }}
-            />
+          <TextField
+            id="date"
+            name="date"
+            type="date"
+            label="Data"
+            onChange={handleInputChange}
+            value={inputs.date || ''}
+            InputLabelProps={{
+              shrink: true
+            }}
+          />
           <TextField
             id="time"
+            name="time"
             type="time"
             label="Time"
+            onChange={handleInputChange}
+            value={inputs.time || ''}
             InputLabelProps={{
               shrink: true
             }}
@@ -43,14 +52,20 @@ function DialogAddReminder(props) {
         <div>
           <input
             id="color"
+            name="color"
             type="color"
+            value={inputs.color || ''}
+            onChange={handleInputChange}
           />
         </div>
         <div>
           <TextField
             id="city"
+            name="city"
             type="text"
             label="City"
+            onChange={handleInputChange}
+            value={inputs.city || ''}
             InputLabelProps={{
               shrink: true
             }}
@@ -59,15 +74,18 @@ function DialogAddReminder(props) {
         <div>
           <TextField
             id="text"
+            name="text"
             type="text"
             label="Text"
+            onChange={handleInputChange}
+            value={inputs.text || ''}
             InputLabelProps={{
               shrink: true
             }}
           />
         </div>
+        <button type="submit">Add new reminder</button>
       </form>
-      <button onClick={addReminder}>Add new reminder</button>
 		</Dialog>
 	);
 }
