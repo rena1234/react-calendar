@@ -16,7 +16,7 @@ function AddReminder(props) {
 	return(
 		<div id='test-add-reminder-button' className={style['add-reminder']}>
       <button onClick={handleClickOpen}>Add new reminder</button>
-      <DialogAddReminder open={open} onClose={handleClose} />
+      <DialogAddReminder open={open} edit={false} onClose={handleClose} />
 		</div>
 	);
 }

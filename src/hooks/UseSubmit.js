@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
-const useSubmit = (callback) => {
-  const [inputs, setInputs] = useState({});
+const useSubmit = (initialObject, callback) => {
+  const [inputs, setInputs] = useState(initialObject);
 
   const handleSubmit = (event) => {
     if (event) {

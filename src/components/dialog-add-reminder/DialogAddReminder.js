@@ -5,30 +5,51 @@ import TextField from '@material-ui/core/TextField';
 import ReminderContext from 'Contexts/Context';
 import useSubmit from 'Hooks/UseSubmit';
 
-
 function DialogAddReminder(props) {
-  const { onClose, open } = props;
-
-  const handleClose = () => {
-    onClose();
-  }
-
-  const { months, setMonths } = useContext(ReminderContext);
+  const { onClose, open, edit, data, position } = props;
 
   const addReminder = ({city, date, text, time, color}) => {
     const day = parseInt(date.split('-')[2]);
     const month = parseInt(date.split('-')[1]);
     let updatedMonths = JSON.parse(JSON.stringify(months));
-    updatedMonths[month - 1][day - 1].push(
-        {text: text, color: color, time: time, city: city});
+    if(!edit) {
+      updatedMonths[month - 1][day - 1].push(
+          {date: date, text: text, color: color, time: time, city: city});
+    } else {
+      if( data.date != date ){
+        const initialDay = parseInt(data.date.split('-')[2]);
+        const initialMonth = parseInt(data.date.split('-')[1]);
+        updatedMonths[initialMonth - 1][initialDay - 1].splice(position, 1); 
+        updatedMonths[month - 1][day - 1].push(
+            {date: date, text: text, color: color, time: time, city: city});
+      }else {
+        updatedMonths[month - 1][day - 1][position] =
+            {date: date, text: text, color: color, time: time, city: city};
+      }
+    }
     setMonths(updatedMonths);
   }
 
-  const {inputs, handleInputChange, handleSubmit} = useSubmit(addReminder);
+  const initialObject = edit? data: {};
+  const {inputs, handleInputChange, handleSubmit} = useSubmit(initialObject, addReminder);
+
+  const handleClose = () => {
+    inputs.date = '';
+    inputs.city = '';
+    inputs.text = '';
+    inputs.color= '';
+    inputs.time = '';
+    onClose();
+  }
+
+  const { months, setMonths } = useContext(ReminderContext);
+
 
 	return(
 		<Dialog onClose={handleClose} open={open}>
-      <DialogTitle>Add Reminder</DialogTitle>
+      <DialogTitle>
+       { edit? 'Edit Reminder': 'Add new reminder'}
+      </DialogTitle>
       <form onSubmit={handleSubmit}> 
         <div>
           <TextField
@@ -90,7 +111,9 @@ function DialogAddReminder(props) {
             }}
           />
         </div>
-        <button id="add-reminder-button" type="submit" onClick={handleSubmit}>Add new reminder</button>
+        <button id="add-reminder-button" type="submit" onClick={handleSubmit}>
+           { edit? 'Save': 'Add new reminder'}
+        </button>
       </form>
 		</Dialog>
 	);

@@ -17,7 +17,7 @@ function Cell(props) {
         {props.day.get('date')}</div> 
       <div className={style['cell__reminder--container']}>
         { React.Children.toArray(
-           reminders.map( r => <Reminder reminder={r}/> )
+           reminders.map( (r, i) => <Reminder position={i} reminder={r}/> )
            )}
       </div>
 		</div>
