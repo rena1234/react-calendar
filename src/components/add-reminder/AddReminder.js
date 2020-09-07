@@ -3,7 +3,7 @@ import style from './AddReminder.module.scss';
 import DialogAddReminder from 'Components/dialog-add-reminder/DialogAddReminder';
 
 function AddReminder(props) {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(props.dialogOpen);
   
   const handleClose = () => {
     setOpen(false);
@@ -14,7 +14,7 @@ function AddReminder(props) {
   }
 
 	return(
-		<div className={style['add-reminder']}>
+		<div id='test-add-reminder-button' className={style['add-reminder']}>
       <button onClick={handleClickOpen}>Add new reminder</button>
       <DialogAddReminder open={open} onClose={handleClose} />
 		</div>

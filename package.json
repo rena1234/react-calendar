@@ -43,9 +43,12 @@
     "redux": "^4.0.5"
   },
   "jest": {
+    "verbose": false,
     "moduleNameMapper": {
       "\\.(scss)$": "identity-obj-proxy",
-      "Components(.*)$": "<rootDir>/src/components/$1"
+      "Components(.*)$": "<rootDir>/src/components/$1",
+      "Contexts(.*)$": "<rootDir>/src/context/$1",
+      "Hooks(.*)$": "<rootDir>/src/hooks/$1"
     }
   }
 }

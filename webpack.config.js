@@ -50,7 +50,7 @@ module.exports = {
 	resolve:{
 		alias: {
 			Components: path.resolve(__dirname, 'src/components'),
-			Context: path.resolve(__dirname, 'src/context'),
+			Contexts: path.resolve(__dirname, 'src/context'),
 			Hooks: path.resolve(__dirname, 'src/hooks')
 		}
 	}

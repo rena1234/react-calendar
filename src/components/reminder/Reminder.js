@@ -3,10 +3,11 @@ import style from './Reminder.module.scss';
 
 function Reminder({reminder}) {
   const dynamicStyle = {
-    background: reminder.color 
+    background: reminder.color? reminder.color: 'white'
   }
+
 	return(
-		<div className={style['reminder']} style={dynamicStyle}>
+		<div id='' className={style['reminder']} style={dynamicStyle}>
       {reminder.text} 
 		</div>
 	);
