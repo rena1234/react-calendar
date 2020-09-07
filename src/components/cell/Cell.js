@@ -5,6 +5,7 @@ import dayjs from 'dayjs';
 import ReminderContext from 'Context/Context';
 
 function Cell(props) {
+  console.log(useContext(ReminderContext));
 	return(
 		<div className={style['cell']}>
       <div className={

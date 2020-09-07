@@ -1,15 +1,15 @@
 import React, {useState, createContext} from 'react'
 
-const ReminderContext = createContext([['aaaaaa', 'bbbbb'], ['bbbbbb', 'cccccc']]);
+const ReminderContext = createContext();
 
 export const ReminderProvider = ({children}) => {
 
-  const [number, setNumber] = useState([['aaaaaa', 'ddddd'], ['bbbbbb', 'eeeeee']]);
+  const [months, setMonths] = useState(Array.from({length: 12}, x => Array.from({length: 31}, x => [])));
 
   return(
     <ReminderContext.Provider value={{
-      number,
-      setNumber
+      months,
+      setMonths
     }}>
       {children}
     </ReminderContext.Provider>

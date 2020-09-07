@@ -13,10 +13,9 @@ function DialogAddReminder(props) {
     onClose();
   }
 
-  const { number, setNumber } = useContext(ReminderContext);
+  const { months, setMonths } = useContext(ReminderContext);
 
   const addReminder = (inputs) => {
-    setNumber([['ggggga', 'ddddd'], ['bbbbbb', 'eeeeee']]);
   }
 
   const {inputs, handleInputChange, handleSubmit} = useSubmit(addReminder);
