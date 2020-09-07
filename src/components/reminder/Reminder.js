@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import style from './Reminder.module.scss';
 
-function Reminder(props) {
+function Reminder({reminder}) {
   const dynamicStyle = {
-    background: 'red'
+    background: reminder.color 
   }
 	return(
 		<div className={style['reminder']} style={dynamicStyle}>
-      {props.text} 
+      {reminder.text} 
 		</div>
 	);
 }
