@@ -31,6 +31,7 @@ function DialogAddReminder(props) {
             name="date"
             type="date"
             label="Data"
+            inputProps={{ min: "2020-01-01", max: "2020-12-31" }}
             onChange={handleInputChange}
             value={inputs.date || ''}
             InputLabelProps={{
