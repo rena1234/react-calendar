@@ -16,7 +16,8 @@ function App (props) {
       */
 	return(
     <ReminderProvider value={months}>
-      <MonthTabs />
+      <MonthTabs className="teste" />
+      <AddReminder dialogOpen={dialogOpen}/>
     </ReminderProvider>
 	);
 }

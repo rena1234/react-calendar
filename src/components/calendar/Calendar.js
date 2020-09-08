@@ -3,7 +3,7 @@ import style from './Calendar.module.scss';
 import Col from 'Components/col/Col.js';
 import dayjs from 'dayjs';
 
-function Calendar() {
+function Calendar({monthNunmber}) {
   const currentMonthDates = Array.from({length: dayjs().daysInMonth()}, (x, i) => dayjs().startOf('month').add(i, 'days')); 
 
   const prevMonthDaysOnView = Array.from({length: currentMonthDates[0].get('day')}, (x, i) => dayjs().startOf('month').subtract(i + 1, 'days')).reverse(); 
