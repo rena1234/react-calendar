@@ -1,0 +1,21 @@
+.dialog {
+  width: 40vw;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+
+  .dialog__input, .dialog__submit, .dialog__color {
+    margin-top: 15px;
+    margin-left: 20px;
+  }
+
+  .dialog__color {
+    display: flex;
+    align-items: center;
+  }
+
+  .dialog__color__picker{
+    background: none !important;
+    border: none !important;
+  }
+}

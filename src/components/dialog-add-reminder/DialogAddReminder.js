@@ -4,6 +4,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import TextField from '@material-ui/core/TextField';
 import ReminderContext from 'Contexts/Context';
 import useSubmit from 'Hooks/UseSubmit';
+import style from './DialogAddReminder.module.scss';
 
 function DialogAddReminder(props) {
   const { onClose, open, edit, data, position } = props;
@@ -28,6 +29,7 @@ function DialogAddReminder(props) {
       }
     }
     setMonths(updatedMonths);
+    handleClose();
   }
 
   const initialObject = edit? data: {};
@@ -46,12 +48,12 @@ function DialogAddReminder(props) {
 
 
 	return(
-		<Dialog onClose={handleClose} open={open}>
+		<Dialog  onClose={handleClose} open={open}>
       <DialogTitle>
        { edit? 'Edit Reminder': 'Add new reminder'}
       </DialogTitle>
-      <form onSubmit={handleSubmit}> 
-        <div>
+      <form className={style['dialog']} onSubmit={handleSubmit}> 
+        <div className={style['dialog__input']}>
           <TextField
             id="add-date-input"
             name="date"
@@ -64,6 +66,8 @@ function DialogAddReminder(props) {
               shrink: true
             }}
           />
+        </div>
+        <div className={style['dialog__input']}>
           <TextField
             id="add-time-input"
             name="time"
@@ -76,8 +80,12 @@ function DialogAddReminder(props) {
             }}
           />
         </div>
-        <div>
+        <div className={style['dialog__color']}>
+          <div>
+            Select a color
+          </div>
           <input
+            className={style['dialog__color__picker']}
             id="add-color-input"
             name="color"
             type="color"
@@ -85,7 +93,7 @@ function DialogAddReminder(props) {
             onChange={handleInputChange}
           />
         </div>
-        <div>
+        <div className={style['dialog__input']}>
           <TextField
             id="add-city-input"
             name="city"
@@ -98,7 +106,7 @@ function DialogAddReminder(props) {
             }}
           />
         </div>
-        <div>
+        <div className={style['dialog__input']}>
           <TextField
             id="add-text-input"
             name="text"
@@ -111,7 +119,7 @@ function DialogAddReminder(props) {
             }}
           />
         </div>
-        <button id="add-reminder-button" type="submit" onClick={handleSubmit}>
+        <button className={style['dialog__submit']} id="add-reminder-button" type="submit" onClick={handleSubmit}>
            { edit? 'Save': 'Add new reminder'}
         </button>
       </form>
