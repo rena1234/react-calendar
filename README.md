@@ -15,10 +15,3 @@ Usage:
 
 - Click on reminder opens a dialog to edit the reminder.
 
-Completed:
-
-- Add reminder.
-
-- Edit reminder.
-
-- Unit test for reminder add ( npm test ).
