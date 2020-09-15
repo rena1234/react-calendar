@@ -1,4 +1,4 @@
-# react-calendar
+# react-calendar (UNDER CONSTRUCTION)
 install: npm install
 
 run: npm start
